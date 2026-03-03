@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand Colors */
+  --color-brand-primary: #148A3B;
+  --color-brand-soft: #3AAE63;
+  --color-brand-accent: #E6A21A;
+  --color-brand-bg: #FFFFFF;
+  --color-brand-text: #1C1C1C;
+  --color-brand-muted: #6B7280;
+  --color-brand-alt-bg: rgba(58, 174, 99, 0.06);
+  --color-brand-footer: #0F5C2A;
+
+  /* Spacing & Radius */
+  --radius-brand: 0.75rem;
+  --shadow-brand: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+@layer components {
+  .container-page {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section {
+    @apply py-16 md:py-24 bg-brand-bg;
+  }
+
+  .section-alt {
+    @apply py-16 md:py-24 bg-brand-alt-bg;
+  }
+
+  .card {
+    @apply bg-white rounded-brand shadow-brand p-6 border border-black/5;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-brand text-white bg-brand-primary hover:bg-brand-soft transition-colors duration-200;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 border border-brand-primary text-base font-medium rounded-brand text-brand-primary bg-transparent hover:bg-brand-alt-bg transition-colors duration-200;
+  }
+
+  .btn-accent {
+    @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-brand text-white bg-brand-accent hover:opacity-90 transition-opacity duration-200;
+  }
+
+  .link-brand {
+    @apply text-brand-primary hover:text-brand-soft font-medium transition-colors;
+  }
+
+  .stat-value {
+    @apply text-4xl md:text-5xl font-bold text-brand-accent;
+  }
+
+  .footer-bg {
+    @apply bg-brand-footer text-white;
+  }
+
+  /* Typography Headings */
+  h1 {
+    @apply text-4xl md:text-6xl font-bold tracking-tight text-brand-text;
+  }
+  h2 {
+    @apply text-3xl md:text-4xl font-bold tracking-tight text-brand-text;
+  }
+  h3 {
+    @apply text-2xl md:text-3xl font-semibold text-brand-text;
+  }
+  h4 {
+    @apply text-xl md:text-2xl font-semibold text-brand-text;
+  }
+}

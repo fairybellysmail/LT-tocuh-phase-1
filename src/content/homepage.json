@@ -1,0 +1,39 @@
+{
+  "hero": {
+    "badge": "Phase-1 Launch",
+    "title": "Empowering Communities Through LiftersTouch",
+    "highlight": "LiftersTouch",
+    "description": "We provide the tools, resources, and support needed to uplift individuals and transform neighborhoods. Join our mission to create lasting impact.",
+    "primaryCta": "Our Programs",
+    "secondaryCta": "Support Our Mission"
+  },
+  "stats": [
+    { "label": "Programs", "value": "50+" },
+    { "label": "Cities", "value": "15" },
+    { "label": "Raised", "value": "$1.2M" },
+    { "label": "Transparency", "value": "100%" }
+  ],
+  "aboutPreview": {
+    "title": "Our Story",
+    "description": "Founded on the belief that everyone deserves a chance to thrive, LiftersTouch has been working tirelessly to bridge the gap between potential and opportunity.",
+    "cta": "Learn More About Us"
+  },
+  "programsPreview": {
+    "title": "Our Impact Programs",
+    "description": "Targeted initiatives designed to address the most pressing needs in our communities.",
+    "items": [
+      {
+        "title": "Youth Mentorship",
+        "description": "Connecting young minds with experienced professionals to guide their career paths."
+      },
+      {
+        "title": "Urban Farming",
+        "description": "Promoting food security and sustainable living through community gardens."
+      },
+      {
+        "title": "Tech Literacy",
+        "description": "Providing digital skills training to bridge the technological divide."
+      }
+    ]
+  }
+}

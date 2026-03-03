@@ -1,0 +1,11 @@
+{
+  "title": "About LiftersTouch",
+  "mission": "To uplift communities by providing sustainable resources and empowering individuals through education, mentorship, and direct support.",
+  "vision": "A world where every community has the tools to thrive and every individual has the opportunity to reach their full potential.",
+  "values": [
+    { "name": "Integrity", "description": "We act with honesty and transparency in everything we do." },
+    { "name": "Empowerment", "description": "We believe in giving people the tools to help themselves." },
+    { "name": "Community", "description": "We are stronger when we work together." }
+  ],
+  "history": "Started in 2015 as a small community group, LiftersTouch has grown into a multi-city organization impacting thousands of lives annually."
+}

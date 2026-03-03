@@ -1,0 +1,20 @@
+{
+  "title": "Programs & Impact",
+  "description": "Our programs are designed to create measurable, sustainable change in the communities we serve.",
+  "programs": [
+    {
+      "id": "youth-mentorship",
+      "name": "Youth Mentorship",
+      "category": "Education",
+      "impact": "Over 500 students mentored annually.",
+      "description": "One-on-one guidance for high school students."
+    },
+    {
+      "id": "urban-farming",
+      "name": "Urban Farming",
+      "category": "Sustainability",
+      "impact": "10 tons of fresh produce grown yearly.",
+      "description": "Community-led gardens in food deserts."
+    }
+  ]
+}

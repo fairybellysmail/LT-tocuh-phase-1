@@ -1,0 +1,15 @@
+{
+  "title": "Contact & Support",
+  "description": "Get in touch with us or find out how you can support our mission.",
+  "contactInfo": {
+    "email": "info@lifterstouch.org",
+    "phone": "+1 (555) 123-4567",
+    "address": "123 Impact Way, Suite 100, Community City, CC 12345"
+  },
+  "support": {
+    "donateTitle": "Donate",
+    "donateDescription": "Your financial contributions go directly to our community programs.",
+    "volunteerTitle": "Volunteer",
+    "volunteerDescription": "Join our team on the ground and make a difference in person."
+  }
+}
