@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import { IMAGES } from '../content/images';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,9 +17,19 @@ export default function Header() {
   return (
     <header className="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-black/5">
       <div className="container-page py-4 flex justify-between items-center">
-        <div className="text-2xl font-bold text-brand-primary">
-          LiftersTouch
-        </div>
+        <a href="/" className="flex items-center gap-2">
+          <img 
+            src={IMAGES.logo} 
+            alt="LiftersTouch Logo" 
+            className="h-10 w-auto"
+            referrerPolicy="no-referrer"
+            onError={(e) => {
+              // Fallback if image is missing
+              e.currentTarget.style.display = 'none';
+              e.currentTarget.parentElement!.innerHTML += '<span class="text-2xl font-bold text-brand-primary">LiftersTouch</span>';
+            }}
+          />
+        </a>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex gap-8">

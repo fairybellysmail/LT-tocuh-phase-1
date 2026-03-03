@@ -1,4 +1,5 @@
 import { Heart, Globe } from 'lucide-react';
+import { IMAGES } from '../content/images';
 
 export default function Footer() {
   return (
@@ -6,7 +7,18 @@ export default function Footer() {
       <div className="container-page">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="col-span-1 md:col-span-2">
-            <h3 className="text-white mb-6">LiftersTouch</h3>
+            <div className="mb-6">
+              <img 
+                src={IMAGES.logo} 
+                alt="LiftersTouch Logo" 
+                className="h-12 w-auto brightness-0 invert"
+                referrerPolicy="no-referrer"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.parentElement!.innerHTML += '<h3 class="text-white">LiftersTouch</h3>';
+                }}
+              />
+            </div>
             <p className="text-white/70 max-w-sm">
               A non-profit organization dedicated to uplifting communities through sustainable programs and direct impact.
             </p>

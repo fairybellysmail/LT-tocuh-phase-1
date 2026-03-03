@@ -1,73 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
+:root {
+  /* Brand Palette (Specified HEX values) */
+  --brand-primary: #148A3B;
+  --brand-soft: #3AAE63;
+  --brand-accent: #E6A21A;
+  --brand-bg: #FFFFFF;
+  --brand-text: #1C1C1C;
+  --brand-muted: #6B7280;
+  --brand-alt-bg: rgba(58, 174, 99, 0.06);
+  --brand-footer: #0F5C2A;
+}
+
 @theme {
-  /* Brand Colors */
-  --color-brand-primary: #148A3B;
-  --color-brand-soft: #3AAE63;
-  --color-brand-accent: #E6A21A;
-  --color-brand-bg: #FFFFFF;
-  --color-brand-text: #1C1C1C;
-  --color-brand-muted: #6B7280;
-  --color-brand-alt-bg: rgba(58, 174, 99, 0.06);
-  --color-brand-footer: #0F5C2A;
+  /* Brand Colors mapped from CSS Variables */
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-soft: var(--brand-soft);
+  --color-brand-accent: var(--brand-accent);
+  --color-brand-bg: var(--brand-bg);
+  --color-brand-text: var(--brand-text);
+  --color-brand-muted: var(--brand-muted);
+  --color-brand-alt-bg: var(--brand-alt-bg);
+  --color-brand-footer: var(--brand-footer);
+
+  /* Typography */
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
 
   /* Spacing & Radius */
+  --spacing-section-py: 6rem;
   --radius-brand: 0.75rem;
-  --shadow-brand: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-brand: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 @layer components {
+  /* Layout Utilities */
   .container-page {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 
+  /* Section Zoning */
   .section {
-    @apply py-16 md:py-24 bg-brand-bg;
+    @apply py-16 md:py-section-py bg-brand-bg;
   }
 
   .section-alt {
-    @apply py-16 md:py-24 bg-brand-alt-bg;
-  }
-
-  .card {
-    @apply bg-white rounded-brand shadow-brand p-6 border border-black/5;
-  }
-
-  .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-brand text-white bg-brand-primary hover:bg-brand-soft transition-colors duration-200;
-  }
-
-  .btn-secondary {
-    @apply inline-flex items-center justify-center px-6 py-3 border border-brand-primary text-base font-medium rounded-brand text-brand-primary bg-transparent hover:bg-brand-alt-bg transition-colors duration-200;
-  }
-
-  .btn-accent {
-    @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-brand text-white bg-brand-accent hover:opacity-90 transition-opacity duration-200;
-  }
-
-  .link-brand {
-    @apply text-brand-primary hover:text-brand-soft font-medium transition-colors;
-  }
-
-  .stat-value {
-    @apply text-4xl md:text-5xl font-bold text-brand-accent;
-  }
-
-  .footer-bg {
-    @apply bg-brand-footer text-white;
+    @apply py-16 md:py-section-py bg-brand-alt-bg;
   }
 
   /* Typography Headings */
   h1 {
-    @apply text-4xl md:text-6xl font-bold tracking-tight text-brand-text;
+    @apply text-4xl md:text-6xl font-bold tracking-tight text-brand-text leading-tight font-sans;
   }
   h2 {
-    @apply text-3xl md:text-4xl font-bold tracking-tight text-brand-text;
+    @apply text-3xl md:text-4xl font-bold tracking-tight text-brand-text leading-snug font-sans;
   }
   h3 {
-    @apply text-2xl md:text-3xl font-semibold text-brand-text;
+    @apply text-2xl md:text-3xl font-semibold text-brand-text font-sans;
   }
   h4 {
-    @apply text-xl md:text-2xl font-semibold text-brand-text;
+    @apply text-xl md:text-2xl font-semibold text-brand-text font-sans;
+  }
+
+  /* UI Components */
+  .card {
+    @apply bg-white rounded-brand shadow-brand p-6 border border-black/5 transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-semibold rounded-brand text-white bg-brand-primary hover:bg-brand-soft transition-all duration-200 active:scale-95 font-sans;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-8 py-3 border-2 border-brand-primary text-base font-semibold rounded-brand text-brand-primary bg-transparent hover:bg-brand-alt-bg transition-all duration-200 active:scale-95 font-sans;
+  }
+
+  .btn-accent {
+    @apply inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-semibold rounded-brand text-white bg-brand-accent hover:opacity-90 transition-all duration-200 active:scale-95 shadow-md font-sans;
+  }
+
+  .stat-value {
+    @apply text-5xl md:text-6xl font-bold text-brand-accent tracking-tighter;
   }
 }
