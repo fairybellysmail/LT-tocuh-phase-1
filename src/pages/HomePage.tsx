@@ -1,81 +1,64 @@
-import homepageContent from '../content/homepage.json';
-import { ArrowRight, Users } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { ArrowRight } from 'lucide-react';
 import { motion } from 'motion/react';
+import HeroSection from '../components/HeroSection';
+import homepageFallback from '../content/homepage.json';
 
 export default function HomePage() {
-  const { hero, stats, aboutPreview, programsPreview } = homepageContent;
+  const [data, setData] = useState<any>(homepageFallback);
+
+  useEffect(() => {
+    fetch('/api/content/homepage')
+      .then((res) => {
+        if (res.ok) return res.json();
+        return null;
+      })
+      .then((hp) => {
+        if (hp) {
+          let stats = homepageFallback.stats;
+          if (hp.statsJson) {
+            try {
+              stats = JSON.parse(hp.statsJson);
+            } catch (e) {}
+          }
+          setData({
+            hero: {
+              badge: hp.badge || homepageFallback.hero.badge,
+              title: hp.heroTitle || homepageFallback.hero.title,
+              highlight: hp.heroHighlight || homepageFallback.hero.highlight,
+              description: hp.heroDescription || homepageFallback.hero.description,
+              primaryCta: hp.primaryCta || homepageFallback.hero.primaryCta,
+              secondaryCta: hp.secondaryCta || homepageFallback.hero.secondaryCta,
+            },
+            stats: stats,
+            aboutPreview: {
+              title: hp.aboutTitle || homepageFallback.aboutPreview.title,
+              description: hp.aboutDescription || homepageFallback.aboutPreview.description,
+              cta: homepageFallback.aboutPreview.cta,
+            },
+            programsPreview: homepageFallback.programsPreview,
+          });
+        }
+      })
+      .catch((err) => console.error('Error fetching homepage API:', err));
+  }, []);
+
+  const { hero, stats, aboutPreview, programsPreview } = data;
 
   return (
     <>
-      {/* HeroSection */}
-      <section id="hero" className="relative overflow-hidden bg-brand-bg pt-32 pb-16 md:pt-48 md:pb-24">
-        <div className="container-page">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <span className="inline-block py-1 px-3 rounded-full bg-brand-alt-bg text-brand-primary text-sm font-semibold mb-6">
-                {hero.badge}
-              </span>
-              <h1>
-                {hero.title.split(hero.highlight)[0]}
-                <span className="text-brand-primary">{hero.highlight}</span>
-                {hero.title.split(hero.highlight)[1]}
-              </h1>
-              <p className="mt-6 text-xl text-brand-muted max-w-2xl">
-                {hero.description}
-              </p>
-              <div className="mt-10 flex flex-wrap gap-4">
-                <button className="btn-primary">
-                  {hero.primaryCta} <ArrowRight className="ml-2 h-5 w-5" />
-                </button>
-                <button className="btn-accent">
-                  {hero.secondaryCta}
-                </button>
-              </div>
-            </motion.div>
-            <motion.div 
-              className="relative"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <div className="aspect-square rounded-brand overflow-hidden shadow-brand">
-                <img 
-                  src="https://picsum.photos/seed/lifter/800/800" 
-                  alt="Community Impact" 
-                  className="w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              <motion.div 
-                className="absolute -bottom-6 -left-6 card max-w-xs"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8 }}
-              >
-                <div className="flex items-center gap-4">
-                  <div className="p-3 bg-brand-alt-bg rounded-full">
-                    <Users className="h-6 w-6 text-brand-primary" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-brand-muted">Community Members</p>
-                    <p className="text-2xl font-bold text-brand-text">12,400+</p>
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      <HeroSection 
+        title={hero.title}
+        description={hero.description}
+        ctaText={hero.primaryCta}
+        ctaLink="/programs-news"
+      />
 
       {/* Stats Strip */}
       <section className="bg-brand-primary py-12 text-white">
         <div className="container-page">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {stats.map((stat, index) => (
+            {stats.map((stat: any, index: number) => (
               <motion.div 
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -136,7 +119,7 @@ export default function HomePage() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {programsPreview.items.map((item, index) => (
+            {programsPreview.items.map((item: any, index: number) => (
               <motion.div 
                 key={index} 
                 className="card hover:border-brand-primary transition-colors cursor-pointer group"
@@ -147,9 +130,9 @@ export default function HomePage() {
               >
                 <h3 className="text-xl mb-4 group-hover:text-brand-primary transition-colors">{item.title}</h3>
                 <p className="text-brand-muted">{item.description}</p>
-                <div className="mt-6 flex items-center text-brand-primary font-medium">
+                <a href="/programs-news" className="mt-6 flex items-center text-brand-primary font-medium">
                   Learn more <ArrowRight className="ml-2 h-4 w-4" />
-                </div>
+                </a>
               </motion.div>
             ))}
           </div>
@@ -168,9 +151,9 @@ export default function HomePage() {
             <p className="text-xl opacity-90 mb-10 max-w-2xl mx-auto">
               Whether you want to volunteer your time or contribute financially, every bit of support helps us reach more people.
             </p>
-            <button className="btn-accent px-12 py-4 text-lg">
+            <a href="/donate" className="btn-accent px-12 py-4 text-lg inline-block">
               Donate Now
-            </button>
+            </a>
           </motion.div>
         </div>
       </section>

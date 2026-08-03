@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ArrowRight } from 'lucide-react';
 import { IMAGES } from '../content/images';
 
 export default function Header() {
@@ -8,10 +8,9 @@ export default function Header() {
   const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
-    { name: 'Programs & Impact', href: '/programs-impact' },
+    { name: 'Programs & News', href: '/programs-news' },
     { name: 'Gallery', href: '/gallery' },
-    { name: 'News', href: '/news' },
-    { name: 'Contact & Support', href: '/contact-support' },
+    { name: 'Donate now', href: '/donate', hasArrow: true },
   ];
 
   return (
@@ -32,16 +31,21 @@ export default function Header() {
         </a>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex gap-8">
+        <nav className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
             <a 
               key={link.name} 
               href={link.href} 
-              className="text-sm font-medium text-brand-text hover:text-brand-primary transition-colors"
+              className="text-sm font-medium text-brand-text hover:text-brand-primary transition-colors inline-flex items-center gap-1"
             >
               {link.name}
+              {link.hasArrow && <ArrowRight className="h-3.5 w-3.5 text-brand-accent inline-block" />}
             </a>
           ))}
+
+          <a href="/contact-support" className="btn-primary !px-5 !py-2 text-sm shadow-sm">
+            Contact & Support
+          </a>
         </nav>
 
         {/* Mobile Menu Toggle */}
@@ -60,12 +64,21 @@ export default function Header() {
             <a 
               key={link.name} 
               href={link.href} 
-              className="text-base font-medium text-brand-text hover:text-brand-primary transition-colors"
+              className="text-base font-medium text-brand-text hover:text-brand-primary transition-colors flex items-center gap-1"
               onClick={() => setIsOpen(false)}
             >
               {link.name}
+              {link.hasArrow && <ArrowRight className="h-4 w-4 text-brand-accent inline-block" />}
             </a>
           ))}
+
+          <a 
+            href="/contact-support" 
+            className="btn-primary w-full text-center"
+            onClick={() => setIsOpen(false)}
+          >
+            Contact & Support
+          </a>
         </nav>
       )}
     </header>

@@ -7,10 +7,11 @@ import { useState, useEffect } from 'react';
 import Layout from './layouts/Layout';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
-import ProgramsPage from './pages/ProgramsPage';
+import ProgramsNewsPage from './pages/ProgramsNewsPage';
 import ContactPage from './pages/ContactPage';
 import GalleryPage from './pages/GalleryPage';
-import NewsPage from './pages/NewsPage';
+import DonatePage from './pages/DonatePage';
+import SettingsPage from './pages/SettingsPage';
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
@@ -47,14 +48,19 @@ export default function App() {
         return <HomePage />;
       case '/about':
         return <AboutPage />;
+      case '/programs-news':
       case '/programs-impact':
-        return <ProgramsPage />;
+      case '/news':
+        return <ProgramsNewsPage />;
       case '/gallery':
         return <GalleryPage />;
-      case '/news':
-        return <NewsPage />;
       case '/contact-support':
         return <ContactPage />;
+      case '/donate':
+        return <DonatePage />;
+      case '/settings':
+      case '/admin':
+        return <SettingsPage />;
       default:
         return <HomePage />;
     }
