@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Menu, X, ArrowRight } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { IMAGES } from '../content/images';
 
 export default function Header() {
@@ -10,7 +10,6 @@ export default function Header() {
     { name: 'About', href: '/about' },
     { name: 'Programs & News', href: '/programs-news' },
     { name: 'Gallery', href: '/gallery' },
-    { name: 'Donate now', href: '/donate', hasArrow: true },
   ];
 
   return (
@@ -36,10 +35,9 @@ export default function Header() {
             <a 
               key={link.name} 
               href={link.href} 
-              className="text-sm font-medium text-brand-text hover:text-brand-primary transition-colors inline-flex items-center gap-1"
+              className="text-sm font-medium text-brand-text hover:text-brand-primary transition-colors"
             >
               {link.name}
-              {link.hasArrow && <ArrowRight className="h-3.5 w-3.5 text-brand-accent inline-block" />}
             </a>
           ))}
 
@@ -64,11 +62,10 @@ export default function Header() {
             <a 
               key={link.name} 
               href={link.href} 
-              className="text-base font-medium text-brand-text hover:text-brand-primary transition-colors flex items-center gap-1"
+              className="text-base font-medium text-brand-text hover:text-brand-primary transition-colors"
               onClick={() => setIsOpen(false)}
             >
               {link.name}
-              {link.hasArrow && <ArrowRight className="h-4 w-4 text-brand-accent inline-block" />}
             </a>
           ))}
 

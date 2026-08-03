@@ -56,7 +56,7 @@ export default function ContactPage() {
                 <Heart className="h-8 w-8 mb-4 text-brand-accent" />
                 <h3 className="text-xl font-bold mb-2 text-white">{support.donateTitle}</h3>
                 <p className="text-white/80 text-sm mb-4">{support.donateDescription}</p>
-                <button className="text-brand-accent font-bold hover:underline">Donate Now &rarr;</button>
+                <a href="/donate" className="text-brand-accent font-bold hover:underline inline-block">Donate Now &rarr;</a>
               </motion.div>
               <motion.div 
                 className="card border-brand-primary/20"
